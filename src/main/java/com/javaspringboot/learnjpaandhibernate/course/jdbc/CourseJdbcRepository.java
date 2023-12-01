@@ -3,7 +3,6 @@ package com.javaspringboot.learnjpaandhibernate.course.jdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.javaspringboot.learnjpaandhibernate.course.Course;

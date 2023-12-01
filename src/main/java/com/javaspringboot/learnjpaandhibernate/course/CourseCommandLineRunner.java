@@ -29,12 +29,13 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 
           repository.save(new Course(1, "learn springboot", "Elodie"));
           repository.save(new Course(2, "learn AWS", "Elodie"));
-          repository.save(new Course(3, "learn Java", "Elodie"));
+          repository.save(new Course(3, "learn Java", "Elisa"));
 
           repository.deleteById(1l);
 
           System.out.println(repository.findById(2l));
           System.out.println(repository.findById(3l));
+          System.out.println(repository.findByAuthor("Elodie"));
 
      }
 
