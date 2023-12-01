@@ -18,6 +18,12 @@ public class CourseJdbcRepository {
                          insert into course (id, name, author) values(?,?,?);
                          """;
 
+     private static String DELETE_QUERY =
+
+               """
+                         delete from course where id = ?;
+                         """;
+
      public void insert(Course course) {
           try {
                springJdbcTemplate.update(INSERT_QUERY, course.getId(), course.getName(), course.getAuthor());
@@ -25,6 +31,16 @@ public class CourseJdbcRepository {
           } catch (Exception e) {
                e.printStackTrace();
                System.out.println("Error inserting data: " + e.getMessage());
+          }
+     }
+
+     public void deleteById(long id) {
+          try {
+               springJdbcTemplate.update(DELETE_QUERY, id);
+               System.out.println("Data deleted successfully");
+          } catch (Exception e) {
+               e.printStackTrace();
+               System.out.println("Error deleting data: " + e.getMessage());
           }
      }
 }
