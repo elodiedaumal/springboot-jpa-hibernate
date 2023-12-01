@@ -20,6 +20,10 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
           repository.insert(new Course(3, "learn Java", "Elodie"));
 
           repository.deleteById(1);
+
+          System.out.println(repository.findById(2));
+          System.out.println(repository.findById(3));
+
      }
 
 }

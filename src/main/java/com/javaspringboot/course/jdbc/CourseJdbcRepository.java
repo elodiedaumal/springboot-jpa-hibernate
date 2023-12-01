@@ -1,7 +1,9 @@
 package com.javaspringboot.course.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.javaspringboot.course.Course;
@@ -24,6 +26,13 @@ public class CourseJdbcRepository {
                          delete from course where id = ?;
                          """;
 
+     private static String SELECT_QUERY =
+
+               """
+                         select * from course
+                         where id = ?;
+                         """;
+
      public void insert(Course course) {
           try {
                springJdbcTemplate.update(INSERT_QUERY, course.getId(), course.getName(), course.getAuthor());
@@ -42,5 +51,12 @@ public class CourseJdbcRepository {
                e.printStackTrace();
                System.out.println("Error deleting data: " + e.getMessage());
           }
+     }
+
+     public Course findById(long id) {
+
+          System.out.println("Data showed successfully");
+          return springJdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
+
      }
 }
